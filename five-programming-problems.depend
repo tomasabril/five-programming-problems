@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1431096601 source:d:\github\five-programming-problems\untitled1.cpp
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
