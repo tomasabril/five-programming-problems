@@ -27,13 +27,14 @@ int sumFor(int * lista, int tam);
 int sumWhile(int * lista, int tam);
 int sumRecursion(int * lista, int tam, int pos);
 int* combinaLista(int* lista1, int* lista2, int tam1, int tam2);
+unsigned long long int* fibonacci(int tam);
 
 int main()
 {
     //
     int primeiro = 0;
-    int segundo  = 1;
-    int terceiro = 0;
+    int segundo  = 0;
+    int terceiro = 1;
     int quarto   = 0;
     int quinto   = 0;
     //
@@ -50,11 +51,22 @@ int main()
         int lista2[5] = {0,0,0,0,0};
         int* listaRes = combinaLista(lista1, lista2, tam1, tam2);
         int i;
-        for(i=0; i<(tam1+tam2); i++){
+        for(i=0; i<(tam1+tam2); i++) {
             printf("%d ", listaRes[i]);
         }
         printf("\n");
+        free(listaRes);
     }
+    if(terceiro) {
+        int i, tam=100;
+        unsigned long long int* listaFib = fibonacci(tam);
+        for(i=0; i<tam; i++) {
+            printf("%llu \n", listaFib[i]);
+        }
+        printf("\n");
+        free(listaFib);
+    }
+
 
     return 0;
 }
@@ -115,7 +127,19 @@ int* combinaLista(int* lista1, int* lista2, int tam1, int tam2)
     return lista3;
 }
 
+unsigned long long int* fibonacci(int tam)
+{
+    unsigned long long int * fib;
+    fib = (unsigned long long int*)calloc(tam, sizeof(unsigned long long int));
+    int i;
+    fib[0] = 0;
+    fib[1] = 1;
+    for(i=1; i<tam; i++) {
+        fib[i+1] = fib[i] + fib[i-1];
+    }
 
+    return fib;
+}
 
 
 
