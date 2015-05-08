@@ -92,11 +92,11 @@ int* combinaLista(int* lista1, int* lista2, int tam1, int tam2)
 {
     int* lista3;
     int tam3 = tam1 + tam2;
-    int i, s=1, pos1=0, pos2=0;
+    int i=0, s=1, pos1=0, pos2=0;
     lista3 = (int*)calloc(tam3, sizeof(int));
 
     while(i < tam3) {
-        if(s) {
+        if(s>0) {
             if(pos1<tam1) {
                 lista3[i] = lista1[pos1];
                 pos1++;
@@ -109,6 +109,7 @@ int* combinaLista(int* lista1, int* lista2, int tam1, int tam2)
                 i++;
             }
         }
+        s *= -1;
     }
 
     return lista3;
