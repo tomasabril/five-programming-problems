@@ -28,14 +28,15 @@ int sumWhile(int * lista, int tam);
 int sumRecursion(int * lista, int tam, int pos);
 int* combinaLista(int* lista1, int* lista2, int tam1, int tam2);
 unsigned long long int* fibonacci(int tam);
+int p4(int* lista, int tam);
 
 int main()
 {
     //
     int primeiro = 0;
     int segundo  = 0;
-    int terceiro = 1;
-    int quarto   = 0;
+    int terceiro = 0;
+    int quarto   = 1;
     int quinto   = 0;
     //
     if(primeiro) {
@@ -66,7 +67,11 @@ int main()
         printf("\n");
         free(listaFib);
     }
-
+    if(quarto) {
+        int tam = 5;
+        int vec[5] = {5,2,1,9,3};
+        printf("\n5 2 1 9 3 \nmaior numero possivel: %d \n", p4(vec, tam));
+    }
 
     return 0;
 }
@@ -141,7 +146,26 @@ unsigned long long int* fibonacci(int tam)
     return fib;
 }
 
-
+int p4(int* lista, int tam)
+{
+    int i, j;
+    int maior, tmp, pos=0;
+    int resultado=0;
+    for(i=0; i<tam; i++) {
+        maior=0;
+        for(j=0; j<tam; j++) {
+            if(lista[j] > maior) {
+                maior=lista[j];
+                tmp=j;
+            }
+        }
+        resultado *= 10;
+        resultado += maior;
+        pos++;
+        lista[tmp] = 0;
+    }
+    return resultado;
+}
 
 
 
