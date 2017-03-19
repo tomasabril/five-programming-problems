@@ -22,13 +22,13 @@ Write a program that outputs all possibilities to put + or - or nothing between 
 #include <stdlib.h>
 #include <math.h>
 
-// 1
 int sumFor(int * lista, int tam);
 int sumWhile(int * lista, int tam);
 int sumRecursion(int * lista, int tam, int pos);
 int* combinaLista(int* lista1, int* lista2, int tam1, int tam2);
 unsigned long long int* fibonacci(int tam);
 int p4(int* lista, int tam);
+void quintoP();
 
 int main()
 {
@@ -36,8 +36,8 @@ int main()
     int primeiro = 0;
     int segundo  = 0;
     int terceiro = 0;
-    int quarto   = 1;
-    int quinto   = 0;
+    int quarto   = 0;
+    int quinto   = 1;
     //
     if(primeiro) {
         int tam = 10;
@@ -72,7 +72,10 @@ int main()
         int vec[5] = {5,2,1,9,3};
         printf("\n5 2 1 9 3 \nmaior numero possivel: %d \n", p4(vec, tam));
     }
+    if(quinto) {
+        quintoP();
 
+    }
     return 0;
 }
 
@@ -146,6 +149,7 @@ unsigned long long int* fibonacci(int tam)
     return fib;
 }
 
+// only works with 1 digit numbers !
 int p4(int* lista, int tam)
 {
     int i, j;
@@ -167,7 +171,41 @@ int p4(int* lista, int tam)
     return resultado;
 }
 
+void quintoP()
+{
+    unsigned long long numero = 0;
+    int iter;
+    for(int i=0; i<3; i++) {
+        for(int j=0; j<3; j++) {
+            for(int k=0; k<3; k++) {
+                for(int l=0; l<3; l++) {
+                    for(int m=0; m<3; m++) {
+                        for(int n=0; n<3; n++) {
+                            for(int o=0; o<3; o++) {
+                                for(int p=0; p<3; p++) {
+                                    for(int q=0; q<3; q++) {
+                                        numero = 1*10000000000000000+i +2*100000000000000+j+ 3*1000000000000+k+ 4*10000000000+l+ 5*100000000+m+ 6*1000000+o+ 7*10000+p+ 8*100+q+ 9;
+                                        for(iter=1; iter<=9; iter++){
+                                            if( (numero%(100*iter))/(100*(iter-1)) == 0)
+                                                numero= numero/(100*iter) + numero%(100*iter);
+                                            if( (numero%(100*iter))/(100*(iter-1)) == 1)
+                                                numero= numero/(100*iter) - numero%(100*iter);
+                                            if( (numero%(100*iter))/(100*(iter-1)) == 2)
+                                                numero= numero;
+                                        }
+                                        if(numero==100)
+                                            printf("\n%d", numero);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
+}
 
 
 
